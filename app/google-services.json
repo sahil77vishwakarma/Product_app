@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "651959078281",
+    "project_id": "meal-app-cdf2e",
+    "storage_bucket": "meal-app-cdf2e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651959078281:android:41a25fc96e27937d832558",
+        "android_client_info": {
+          "package_name": "com.example.productsadder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIpRDAb-zRkuAt77viZ-HcvHIj-8mCj4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651959078281:android:4e60eaa62e865283832558",
+        "android_client_info": {
+          "package_name": "com.example.zan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIpRDAb-zRkuAt77viZ-HcvHIj-8mCj4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
