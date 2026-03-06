@@ -11,6 +11,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.util.UUID
 
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.buttonImagesPicker.setOnClickListener{
+        binding.buttonColorPicker.setOnClickListener{
             ColorPickerDialog.Builder(this)
                 .setTitle("Product Color")
                 .setPositiveButton("Select", object : ColorEnvelopeListener{
@@ -85,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(ACTION_GET_CONTENT)
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             intent.type = "image/*"
-
+            selectedImageActivityResult.launch(intent)
         }
     }
 
@@ -128,7 +130,10 @@ class MainActivity : AppCompatActivity() {
 
 
         lifecycleScope.launch(Dispatchers.IO){
-            showloading()
+            withContext(Dispatchers.Main){
+                showloading()
+            }
+
             try {
                 async {
                     imagesByteArrays.forEach {
@@ -144,7 +149,9 @@ class MainActivity : AppCompatActivity() {
 
             }catch (e : java.lang.Exception){
                 e.printStackTrace()
-                hideLoading()
+                withContext(Dispatchers.Main){
+                    hideLoading()
+                }
             }
 
 
@@ -174,11 +181,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hideLoading() {
-        TODO("Not yet implemented")
+        binding.ivProgressBar.visibility = View.INVISIBLE
     }
 
     private fun showloading() {
-        TODO("Not yet implemented")
+        binding.ivProgressBar.visibility = View.VISIBLE
     }
 
 
